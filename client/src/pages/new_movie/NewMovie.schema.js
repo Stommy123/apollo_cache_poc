@@ -11,7 +11,8 @@ export const schema = {
       id: 'title',
       placeholder: 'title',
       widget: 'input',
-      required: true
+      required: true,
+      defaultValue: 'Frozen',
     },
     {
       label: 'Director',
@@ -19,7 +20,8 @@ export const schema = {
       id: 'director',
       placeholder: 'Director',
       widget: 'input',
-      required: true
+      required: true,
+      defaultValue: 'John Buck',
     },
     {
       id: 'genre',
@@ -29,7 +31,8 @@ export const schema = {
       placeholder: 'Genre',
       widget: 'select',
       required: true,
-      options: GENRES
+      options: GENRES,
+      defaultValue: [{ value: 'FANTASY', label: 'Fantasy' }],
     },
     {
       label: 'Year',
@@ -37,16 +40,8 @@ export const schema = {
       id: 'year',
       placeholder: 'Year',
       widget: 'input',
-      required: true
+      required: true,
+      defaultValue: '2013',
     },
-    {
-      label: 'Rate (1-10)',
-      type: 'number',
-      min: '1',
-      max: '10',
-      id: 'rate',
-      placeholder: 'Rate',
-      widget: 'input'
-    }
-  ]
+  ],
 };

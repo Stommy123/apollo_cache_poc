@@ -4,10 +4,24 @@ export const CreateMovie = gql`
   mutation CreateMovie($input: NewMovieInput!) {
     createMovie(input: $input) {
       _id
-      title 
-      year 
-      director 
-      duration 
+      title
+      year
+      director
+      duration
+      genre
+      rate
+    }
+  }
+`;
+
+export const CreateMovieDelayed = gql`
+  mutation CreateMovieDelayed($input: NewMovieInput!) {
+    createMovieDelayed(input: $input) {
+      _id
+      title
+      year
+      director
+      duration
       genre
       rate
     }
@@ -17,8 +31,8 @@ export const CreateMovie = gql`
 export const DeleteMovie = gql`
   mutation DeleteMovie($_id: String!) {
     deleteMovie(_id: $_id) {
-      status 
+      success
       message
-    } 
+    }
   }
 `;

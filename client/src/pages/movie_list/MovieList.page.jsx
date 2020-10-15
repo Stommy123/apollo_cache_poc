@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-apollo';
 import { FetchMovies } from '../../graphql/queries';
 import { SectionWrapper, List, Filters, Loader } from '../../components';
@@ -12,7 +12,7 @@ const MovieList = ({ fetchPolicy, heading }) => {
     fetchPolicy,
   });
 
-  const movies = useMemo(_ => data.movies || [], [data]);
+  const movies = data.movies || [];
 
   const applyFilters = ({ genre, ...filtersToApply }) => {
     const parsedGenres = genre && genre.map(({ value }) => value);
@@ -31,7 +31,7 @@ const MovieList = ({ fetchPolicy, heading }) => {
         onApplyFilters={applyFilters}
         onClearFilters={clearFilter}
       />
-      {loading ? <Loader /> : <List movies={movies} />}
+      {!movies.length && loading ? <Loader /> : <List movies={movies} />}
     </SectionWrapper>
   );
 };

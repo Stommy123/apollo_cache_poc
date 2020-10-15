@@ -7,7 +7,8 @@ const Query = {
 };
 
 const Mutation = {
-  createMovie: (_, { input = {} }) => MovieService.createMovie(input),
+  createMovie: (_, { input }) => MovieService.createMovie(input),
+  createMovieDelayed: (_, { input }) => MovieService.createMovieDelayed(input),
   deleteMovie: (_, { _id }) => MovieService.deleteMovie(_id),
   seedMovies: _ => MovieService.seedMovies(),
   deleteAll: _ => MovieService.deleteAll(),

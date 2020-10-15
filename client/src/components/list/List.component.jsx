@@ -12,10 +12,10 @@ const List = ({
   <div>
     <div className={classNames('movies-list', className)}>
       {movies.length ? (
-        movies.map(({ _id, title, rate }) => (
+        movies.map(({ _id, title, year }) => (
           <div className='list-item' key={_id}>
             <Link to={`/movie/${_id}`}>
-              {title} - {rate || 'N/A'}
+              {title} - {year}
             </Link>
           </div>
         ))

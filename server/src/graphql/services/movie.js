@@ -11,12 +11,12 @@ class MovieService {
     const parsedDirector = director && new RegExp(director.trim(), 'i');
     const variables = {
       ...whereClause,
-      ...(parsedTitle && { parsedTitle }),
+      ...(parsedTitle && { title: parsedTitle }),
       ...(parsedDirector && { director: parsedDirector }),
       ...(genre && { genre: parseGenres(genre) }),
     };
 
-    return Movie.find(variables).sort();
+    return Movie.find(variables);
   };
 
   static getRandomMovie = async _ => {
@@ -32,14 +32,22 @@ class MovieService {
     return Movie.create(newMovieData);
   };
 
-  static deleteMovie = async _id => {
-    const { deletedCount } = (await Movie.deleteOne({ _id })) || {};
-    const [success, status, message] =
-      deletedCount === 1
-        ? [true, 200, 'Movie successfully deleted']
-        : [false, 500, 'Could not find movie to delete'];
+  static createMovieDelayed = async input => {
+    const simulateWait = _ => new Promise(resolve => setTimeout(resolve, 3000));
 
-    return { success, status, message };
+    await simulateWait();
+
+    return MovieService.createMovie(input);
+  };
+
+  static deleteMovie = async title => {
+    const { deletedCount } = (await Movie.deleteOne({ title })) || {};
+    const [success, message] =
+      deletedCount === 1
+        ? [true, 'Movie successfully deleted']
+        : [false, 'Could not find movie to delete'];
+
+    return { success, message };
   };
 
   static seedMovies = async _ => {

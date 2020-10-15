@@ -19,6 +19,7 @@ export default gql`
 
   type Mutation {
     createMovie(input: NewMovieInput!): Movie
+    createMovieDelayed(input: NewMovieInput!): Movie
     deleteMovie(_id: String!): DeleteMovieResponse
     deleteAll: Boolean
     seedMovies: Boolean
@@ -41,7 +42,6 @@ export default gql`
 
   type DeleteMovieResponse {
     success: Boolean
-    status: Int
     message: String
   }
 

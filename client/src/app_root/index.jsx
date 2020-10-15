@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
+import { ToastContainer } from 'react-toastify';
 import client from './client';
 import Content from '../content';
 
@@ -9,6 +10,7 @@ const App = _ => (
     <Router>
       <Content />
     </Router>
+    <ToastContainer />
   </ApolloProvider>
 );
 

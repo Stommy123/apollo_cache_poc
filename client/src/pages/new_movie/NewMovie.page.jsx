@@ -1,8 +1,9 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import { Form, SectionWrapper } from '../../components';
 import { schema } from './NewMovie.schema';
 
-const NewMovie = ({ history, executeMutation, subheading = 'Default' }) => {
+const NewMovie = ({ executeMutation, subheading = 'Default' }) => {
   const handleSubmit = async ({ genre, ...inputData }) => {
     try {
       const parsedGenres = genre && genre.map(({ value }) => value);
@@ -12,9 +13,11 @@ const NewMovie = ({ history, executeMutation, subheading = 'Default' }) => {
         duration: '2h15min',
       };
       await executeMutation({ variables: { input } });
-      // history.push('/');
+
+      toast.info('Movie created!');
     } catch (e) {
       console.log('error creating new movie', e);
+      toast.error('Failed to create movie');
     }
   };
 

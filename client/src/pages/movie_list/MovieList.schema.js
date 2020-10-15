@@ -2,18 +2,18 @@ import { GENRES } from '../../constants';
 
 export const filterTypes = [
   {
-    id: 'director',
+    id: 'title',
     type: 'text',
     widget: 'input',
-    label: 'Director',
-    placeholder: 'Director'
+    label: 'Title',
+    placeholder: 'title',
   },
   {
     id: 'year',
     type: 'number',
     widget: 'input',
     label: 'Year',
-    placeholder: 'Year'
+    placeholder: 'Year',
   },
   {
     id: 'genre',
@@ -21,6 +21,6 @@ export const filterTypes = [
     label: 'Genre',
     placeholder: 'Genre',
     options: GENRES,
-    isMulti: true
-  }
+    isMulti: true,
+  },
 ];
